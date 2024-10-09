@@ -5,11 +5,14 @@ https://github.com/jianzhuozhuTHU/MPC-D-CBF/issues/1
 \
 pseudo_odom node has been included in this project.
 
-In addition, you may need \
-sudo apt-get install ros-noetic-velodyne-*  \
-sudo apt-get install ros-noetic-jackal-control  \
-sudo apt-get install ros-noetic-jackal-description  \
+In addition, you may need
+```
+sudo apt-get install ros-noetic-velodyne-*  
+sudo apt-get install ros-noetic-jackal-control  
+sudo apt-get install ros-noetic-jackal-description  
 pip install casadi  
+```
+
 
 # Origin project:
 Github: https://github.com/jianzhuozhuTHU/MPC-D-CBF  \
