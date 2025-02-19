@@ -2,7 +2,7 @@
 
 Re-reproduce of MPC-D-CBF with tuning and new environments (indoor and pedestrain)
 
-./mpc_d_cbf.mp4
+![demo](./mpc_d_cbf.gif)
 
 Reproduce procedure please refer to
 https://github.com/jianzhuozhuTHU/MPC-D-CBF/issues/1
