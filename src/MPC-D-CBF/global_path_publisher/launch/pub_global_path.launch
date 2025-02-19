@@ -1,0 +1,35 @@
+<launch>
+  <!-- 1: default path for scene/launch/dynamic.launch
+        2: success example for indoor case (pedsim_sumulator jackal_ped_world.launch)
+        3: fail example for indoor case -->
+    <arg name="path" default="1"/>
+
+    <group if="$(eval arg('path') == 1)">
+        <node pkg="global_path_publisher" type="global_path_pub" name="global_path_pub">  
+        </node> 
+    </group>
+
+    <!-- success case -->
+    <group if="$(eval arg('path') == 2)">
+        <node pkg="global_path_publisher" type="global_path_pub" output="screen" name="global_path_pub"> 
+            <param name="start_x" value="4.0"/> 
+            <param name="start_y" value="6.0"/>  
+            <param name="end_x" value="3.5"/>  
+            <param name="end_y" value="16.0"/> 
+        </node> 
+    </group>
+
+    <!-- fail case -->
+    <group if="$(eval arg('path') == 3)">
+        <node pkg="global_path_publisher" type="global_path_pub" output="screen" name="global_path_pub"> 
+            <param name="start_x" value="4.0"/> 
+            <param name="start_y" value="6.0"/>  
+            <param name="end_x" value="14.0"/>  
+            <param name="end_y" value="6.0"/>   
+        </node> 
+    </group>
+
+    <!-- <node pkg="global_path_publisher" type="global_path_pub" output="screen" name="global_path_pub">  
+    </node>  -->
+
+</launch>

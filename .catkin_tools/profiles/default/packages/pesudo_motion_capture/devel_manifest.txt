@@ -1,0 +1,5 @@
+pedsim_ros_with_gazebo/pesudo_motion_capture
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pesudo_motion_capture/cmake.lock /home/chengrui/wk/MPC-D-CBF/devel/./cmake.lock
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pesudo_motion_capture/share/pesudo_motion_capture/cmake/pesudo_motion_captureConfig-version.cmake /home/chengrui/wk/MPC-D-CBF/devel/share/pesudo_motion_capture/cmake/pesudo_motion_captureConfig-version.cmake
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pesudo_motion_capture/share/pesudo_motion_capture/cmake/pesudo_motion_captureConfig.cmake /home/chengrui/wk/MPC-D-CBF/devel/share/pesudo_motion_capture/cmake/pesudo_motion_captureConfig.cmake
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pesudo_motion_capture/lib/pkgconfig/pesudo_motion_capture.pc /home/chengrui/wk/MPC-D-CBF/devel/lib/pkgconfig/pesudo_motion_capture.pc

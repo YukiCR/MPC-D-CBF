@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/opt/ros/noetic/include/**",
+                "/home/chengrui/wk/MPC_D_CBF/src/MPC-D-CBF/local_map/include/**",
+                "/home/chengrui/wk/MPC_D_CBF/src/MPC-D-CBF/obs_param/include/**",
+                "/home/chengrui/wk/MPC_D_CBF/src/MPC-D-CBF/scene/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14",
+            "configurationProvider": "b2.catkin_tools"
+        }
+    ],
+    "version": 4
+}

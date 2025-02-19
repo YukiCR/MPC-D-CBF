@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/chengrui/wk/SafeJackal/devel_isolated/spencer_vision_msgs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/spencer_tracking_msgs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/spencer_social_relation_msgs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/spencer_human_attribute_msgs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/pedsim_visualizer/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/pedsim_simulator/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/pedsim_srvs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/pedsim_msgs/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/cartographer_ros_msgs/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/chengrui/wk/SafeJackal/devel_isolated/cartographer/include/**",
+        "/home/chengrui/wk/SafeJackal/src/cbf/include/**",
+        "/home/chengrui/wk/SafeJackal/src/pedsim_ros_with_gazebo/3rdparty/libpedsim/include/**",
+        "/home/chengrui/wk/SafeJackal/src/pedsim_ros_with_gazebo/pedsim_sensors/include/**",
+        "/home/chengrui/wk/SafeJackal/src/pedsim_ros_with_gazebo/pedsim_simulator/include/**",
+        "/home/chengrui/wk/SafeJackal/src/pedsim_ros_with_gazebo/pedsim_utils/include/**",
+        "/home/chengrui/wk/SafeJackal/src/pedsim_ros_with_gazebo/pedsim_visualizer/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

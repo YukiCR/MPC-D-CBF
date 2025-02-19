@@ -1,0 +1,6 @@
+pedsim_ros_with_gazebo/pedsim_gazebo_plugin
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pedsim_gazebo_plugin/cmake.lock /home/chengrui/wk/MPC-D-CBF/devel/./cmake.lock
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pedsim_gazebo_plugin/share/pedsim_gazebo_plugin/cmake/pedsim_gazebo_pluginConfig-version.cmake /home/chengrui/wk/MPC-D-CBF/devel/share/pedsim_gazebo_plugin/cmake/pedsim_gazebo_pluginConfig-version.cmake
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pedsim_gazebo_plugin/share/pedsim_gazebo_plugin/cmake/pedsim_gazebo_pluginConfig.cmake /home/chengrui/wk/MPC-D-CBF/devel/share/pedsim_gazebo_plugin/cmake/pedsim_gazebo_pluginConfig.cmake
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pedsim_gazebo_plugin/lib/libActorPosesPlugin.so /home/chengrui/wk/MPC-D-CBF/devel/lib/libActorPosesPlugin.so
+/home/chengrui/wk/MPC-D-CBF/devel/.private/pedsim_gazebo_plugin/lib/pkgconfig/pedsim_gazebo_plugin.pc /home/chengrui/wk/MPC-D-CBF/devel/lib/pkgconfig/pedsim_gazebo_plugin.pc

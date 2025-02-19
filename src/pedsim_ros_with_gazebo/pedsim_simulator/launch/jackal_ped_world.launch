@@ -1,0 +1,99 @@
+<launch>
+  <param name="use_sim_time" value="true"/>
+  <arg name="use_sim_time" value="true"/>
+  <arg name="kbd_teleop" default="false"/>
+  <arg name="rqt_teleop" default="false"/>
+  <arg name="scene_file" default="$(find pedsim_simulator)/scenarios/eng_hall_noPed.xml"/>
+  <arg name="world_name" default="$(find pedsim_gazebo_plugin)/worlds/eng_hall.world"/>
+  <arg name="default_queue_size" default="10"/>
+  <arg name="max_robot_speed" default="1.5"/>
+  <arg name="robot_mode" default="1"/>
+  <arg name="enable_groups" default="true"/>
+  <arg name="with_robot" default="true"/>
+  <arg name="pose_initial_x" default="4.0"/>
+  <arg name="pose_initial_y" default="6.0"/>
+  <arg name="pose_initial_theta" default="0.0"/>
+  <arg name="simulation_factor" default="1"/>
+  <arg name="update_rate" default="25.0"/>
+  <arg name="visualize" default="false"/>
+  <arg name="gui" default="true" doc="Bring up the Gazebo graphical interface"/>
+  <arg name="headless" default="false" />
+  <arg name="rviz_frame" default="map"/>
+
+  <!-- reference path for global path -->
+  <!-- 1: default path for scene/launch/dynamic.launch
+        2: success example for indoor case (pedsim_sumulator jackal_ped_world.launch)
+        3: fail example for indoor case -->
+  <arg name="path" default="2" />
+
+  <!-- Short-term hack to support the original front_laser:=true argument for spawning
+       the simulator. This will be removed in favour of using the config:=x arg instead. -->
+  <arg name="front_laser" default="true" />
+  <arg name="default_config" value="front_laser" if="$(arg front_laser)" />
+  <arg name="default_config" value="base" unless="$(arg front_laser)" />
+  <!-- end of hack -->
+
+   <!-- Configuration of Jackal which you would like to simulate.
+       See jackal_description for details. -->
+  <arg name="config" default="$(arg default_config)" />
+
+  <!-- Optionally enable teleop for the simulation -->
+  <arg name="joystick" default="true" />
+
+  <!-- Launch Gazebo with the specified world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="0" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="use_sim_time" value="$(arg use_sim_time)" />
+    <arg name="headless" value="$(arg headless)" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+
+  <!-- Spawn Jackal -->
+  <include file="$(find jackal_gazebo)/launch/spawn_jackal.launch">
+    <arg name="x" value="$(arg pose_initial_x)" />
+    <arg name="y" value="$(arg pose_initial_y)" />
+    <arg name="z" value="1.0" />
+    <arg name="yaw" value="$(arg pose_initial_theta)" />
+    <arg name="config" value="$(arg config)" />
+    <arg name="joystick" value="$(arg joystick)" />
+  </include>
+
+  <!-- this node spawn pedsim actors to gazebo once, then the plugin updates their pose -->  
+  <node pkg="pedsim_gazebo_plugin" type="spawn_pedsim_agents.py" name="spawn_pedsim_agents"  output="screen">
+  </node>
+
+  <!-- main simulator node -->
+  <node name="pedsim_simulator" pkg="pedsim_simulator" type="pedsim_simulator" output="screen">
+    <param name="scene_file" value="$(arg scene_file)" type="string"/>
+    <param name="default_queue_size" value="$(arg default_queue_size)" type="int"/>
+    <param name="max_robot_speed" value="$(arg max_robot_speed)" type="double"/>
+    <param name="robot_mode" value="$(arg robot_mode)" type="int"/>
+    <param name="enable_groups" value="$(arg enable_groups)" type="bool"/>
+    <param name="simulation_factor" value="$(arg simulation_factor)" type="double"/>
+    <param name="update_rate" value="$(arg update_rate)" type="double"/>
+    <param name="frame_id"  value="map" />
+  </node>
+
+  <!-- Visualizer -->
+  <include file="$(find pedsim_visualizer)/launch/visualizer.launch"/>
+
+  <include file="$(find local_map)/launch/for_simulation.launch" />
+
+  <!-- <include file="$(find scene)/launch/movetest_node.launch" /> -->
+
+  <node pkg="tf" type="static_transform_publisher" name="world_odom_broadcaster" args="4.0 6.0 0 0 0 0 1 world odom 100" />
+
+  <node pkg="obs_param" type="obs_kf" output="screen" name="obs_kf" />
+
+  <!-- need this for pesudo odometry -->
+  <node pkg="scene" type="pseudo_odom" output="screen" name="pseudo_odom" />
+
+  <!-- set the global reference path -->
+  <include file="$(find global_path_publisher)/launch/pub_global_path.launch" >
+      <arg name="path" value="$(arg path)"/>
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scene)/rviz_config/simulation.rviz" required="true" />
+
+</launch>

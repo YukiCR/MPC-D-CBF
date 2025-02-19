@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- reference path for global path -->
+    <!-- 1: default path for scene/launch/dynamic.launch
+         2: success example for indoor case (pedsim_sumulator jackal_ped_world.launch)
+         3: fail example for indoor case -->
+    <arg name="path" default="1" />
+
+    <include file="$(find scene)/launch/start.launch">
+        <arg name="world" value="$(find scene)/worlds/world2.world" />
+    </include>
+
+    <include file="$(find jackal_description)/launch/description.launch" />
+    <include file="$(find jackal_control)/launch/control.launch">
+        <arg name="enable_ekf" value="false" />
+    </include>
+    <include file="$(find jackal_control)/launch/teleop.launch">
+        <arg name="joystick" value="false" />
+    </include>
+
+    <!-- <node pkg="tf" type="static_transform_publisher" name="world_odom_broadcaster" args="0 0 0 0 0 0 1 world odom 100" /> -->
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+        args="-urdf -model jackal -param robot_description -x -10 -y 0 -z 1.0" />
+
+    <include file="$(find local_map)/launch/for_simulation.launch" />
+
+    <include file="$(find scene)/launch/movetest_node.launch" />
+
+    <node pkg="obs_param" type="obs_kf" output="screen" name="obs_kf" />
+
+    <!-- need this for pesudo odometry -->
+    <node pkg="scene" type="pseudo_odom" output="screen" name="pseudo_odom" />
+
+    <!-- set the global reference path -->
+    <include file="$(find global_path_publisher)/launch/pub_global_path.launch" >
+        <arg name="path" value="$(arg path)"/>
+    </include>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find scene)/rviz_config/simulation.rviz" required="true" />
+
+</launch>
