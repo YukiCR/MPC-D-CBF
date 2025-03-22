@@ -4,3 +4,4 @@ devel_isolated/
 build_isolated/
 logs/
 install/
+.catkin_tools/profiles/default/packages/
